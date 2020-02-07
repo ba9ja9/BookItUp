@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "732084399447",
+    "firebase_url": "https://bookitup-f5528.firebaseio.com",
+    "project_id": "bookitup-f5528",
+    "storage_bucket": "bookitup-f5528.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:732084399447:android:3d99485ead3af2e7c1a212",
+        "android_client_info": {
+          "package_name": "com.example.bookitup"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "732084399447-qk686seo27lfcb89gkdbfa8lhf0qj797.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bookitup",
+            "certificate_hash": "b66cf063f155bd98a56e3b76307ed89ad73fde3b"
+          }
+        },
+        {
+          "client_id": "732084399447-ievpirel3d0t9ujhpvo4s4hi8sqh2l6k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-cnD5TTzx7ZSlC0cWpY2KWLvCp6Q8AEQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "732084399447-ievpirel3d0t9ujhpvo4s4hi8sqh2l6k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
