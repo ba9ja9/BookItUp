@@ -16,12 +16,13 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 
 public class RegistrationActivity extends AppCompatActivity {
 
     private EditText emailTV, passwordTV;
-    private Button regBtn;
+    private Button regBtn, loginBtn;
     private ProgressBar progressBar;
 
     private FirebaseAuth mAuth;
@@ -40,6 +41,13 @@ public class RegistrationActivity extends AppCompatActivity {
                 registerNewUser();
             }
         });
+        loginBtn.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);
+                 startActivity(intent);
+             }
+        });
     }
 
     private void registerNewUser() {
@@ -48,6 +56,7 @@ public class RegistrationActivity extends AppCompatActivity {
         String email, password;
         email = emailTV.getText().toString();
         password = passwordTV.getText().toString();
+        final FirebaseUser user = mAuth.getCurrentUser();
 
         if (TextUtils.isEmpty(email)) {
             Toast.makeText(getApplicationContext(), "Please enter email...", Toast.LENGTH_LONG).show();
@@ -58,14 +67,31 @@ public class RegistrationActivity extends AppCompatActivity {
             return;
         }
 
+        //verify email
+        user.sendEmailVerification().addOnCompleteListener(this, new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()){
+                    Toast.makeText(getApplicationContext(),
+                            "Please check:" + user.getEmail() + "a verification email",
+                            Toast.LENGTH_LONG).show();
+                }
+                else{
+                    Toast.makeText(getApplicationContext(),
+                            "Failed to send verification email." + task.getException(),
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        //register if email is verified
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
+                        if (task.isSuccessful() && user.isEmailVerified()) {
                             Toast.makeText(getApplicationContext(), "Registration successful!", Toast.LENGTH_LONG).show();
                             progressBar.setVisibility(View.GONE);
-
                             Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);
                             startActivity(intent);
                         }
@@ -81,6 +107,7 @@ public class RegistrationActivity extends AppCompatActivity {
         emailTV = findViewById(R.id.email);
         passwordTV = findViewById(R.id.password);
         regBtn = findViewById(R.id.register);
+        loginBtn = findViewById(R.id.login);
         progressBar = findViewById(R.id.progressBar);
     }
 }
