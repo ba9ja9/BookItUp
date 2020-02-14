@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -22,6 +23,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText emailTV, passwordTV;
     private Button loginBtn;
     private ProgressBar progressBar;
+    private TextView forgotPassword;
 
     private FirebaseAuth mAuth;
     @Override
@@ -37,6 +39,14 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 loginUserAccount();
+            }
+        });
+
+
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LoginActivity.this, ResetPasswordActivity.class));
             }
         });
     }
@@ -56,23 +66,32 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Please enter password!", Toast.LENGTH_LONG).show();
             return;
         }
-        final FirebaseUser user = mAuth.getCurrentUser();
+
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful() && user.isEmailVerified()) {
-                            Toast.makeText(getApplicationContext(), "Login successful!", Toast.LENGTH_LONG).show();
-                            progressBar.setVisibility(View.GONE);
-                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                            startActivity(intent);
+                        if (task.isSuccessful()) {
+                            final FirebaseUser user = mAuth.getCurrentUser();
+                            user.isEmailVerified();
+                            if(!(user.isEmailVerified())){
+                                Toast.makeText(getApplicationContext(), "Please verify your email before login.", Toast.LENGTH_LONG).show();
+                                progressBar.setVisibility(View.GONE);
+                            }
+                            else{
+                                Toast.makeText(getApplicationContext(), "Login successful. Welcome to BookItUp " + ("U+1F618"), Toast.LENGTH_LONG).show();
+                                progressBar.setVisibility(View.GONE);
+                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                startActivity(intent);
+                            }
                         }
                         else {
-                            Toast.makeText(getApplicationContext(), "Login failed! Please try again later" + task.getException(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "Login failed! Please try again later " + task.getException(), Toast.LENGTH_LONG).show();
                             progressBar.setVisibility(View.GONE);
                         }
                     }
                 });
+
     }
 
 
@@ -82,5 +101,7 @@ public class LoginActivity extends AppCompatActivity {
         passwordTV = findViewById(R.id.password);
         loginBtn = findViewById(R.id.login);
         progressBar = findViewById(R.id.progressBar);
+        forgotPassword = findViewById(R.id.forgotPassword);
+
     }
 }
