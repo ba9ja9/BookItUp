@@ -79,7 +79,7 @@ public class LoginActivity extends AppCompatActivity {
                                 progressBar.setVisibility(View.GONE);
                             }
                             else{
-                                Toast.makeText(getApplicationContext(), "Login successful. Welcome to BookItUp " + ("U+1F618"), Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), "Login successful. Welcome to BookItUp ", Toast.LENGTH_LONG).show();
                                 progressBar.setVisibility(View.GONE);
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                 startActivity(intent);

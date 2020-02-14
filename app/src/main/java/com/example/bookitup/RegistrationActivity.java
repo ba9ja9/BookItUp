@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,7 +23,8 @@ import com.google.firebase.auth.FirebaseUser;
 public class RegistrationActivity extends AppCompatActivity {
 
     private EditText emailTV, passwordTV;
-    private Button regBtn, loginBtn;
+    private Button regBtn;
+    private TextView login;
     private ProgressBar progressBar;
 
     private FirebaseAuth mAuth;
@@ -41,7 +43,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 registerNewUser();
             }
         });
-        loginBtn.setOnClickListener(new View.OnClickListener() {
+        login.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
                  Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);
@@ -56,7 +58,9 @@ public class RegistrationActivity extends AppCompatActivity {
         String email, password, emailRegex;
         email = emailTV.getText().toString();
         password = passwordTV.getText().toString();
-        emailRegex = "^[-a-z0-9~!$%^&*_=+}{\\'?]+(\\.[-a-z0-9~!$%^&*_=+}{\\'?]+)*@([a-z0-9_][-a-z0-9_]*(\\.[-a-z0-9_]+)*\\.(edu|[a-z][a-z])|([0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}))(:[0-9]{1,5})?$";
+        emailRegex = "^[-a-z0-9~!$%^&*_=+}{\\'?]+(\\.[-a-z0-9~!$%^&*_=+}{\\'?]+" +
+                ")*@([a-z0-9_][-a-z0-9_]*(\\.[-a-z0-9_]+" +
+                ")*\\.(edu|[a-z][a-z])|([0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}))(:[0-9]{1,5})?$";
 
 
         if (TextUtils.isEmpty(email)) {
@@ -116,7 +120,7 @@ public class RegistrationActivity extends AppCompatActivity {
         emailTV = findViewById(R.id.email);
         passwordTV = findViewById(R.id.password);
         regBtn = findViewById(R.id.register);
-        loginBtn = findViewById(R.id.login);
+        login = findViewById(R.id.login);
         progressBar = findViewById(R.id.progressBar);
     }
 }

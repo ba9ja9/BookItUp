@@ -26,6 +26,8 @@ import android.view.Menu;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.Currency;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -86,8 +88,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_logout:
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 FirebaseAuth.getInstance().signOut();
-
-                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(new Intent(intent));
                 return true;
 
             default:
