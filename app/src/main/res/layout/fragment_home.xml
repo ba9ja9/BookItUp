@@ -20,18 +20,34 @@
 
     <EditText
         android:id="@+id/search_edit_text"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:hint="Enter book name or ISBN" />
+        android:layout_marginStart="9dp"
+        android:layout_marginLeft="9dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginRight="9dp"
+        android:layout_marginBottom="2dp"
+        android:hint="Enter book name or ISBN"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:layout_width="409dp"
-        android:layout_height="684dp"
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginRight="1dp"
         android:orientation="vertical"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_edit_text"
         tools:visibility="visible">
 
         <TextView
@@ -56,7 +72,7 @@
             android:id="@+id/imageView3"
             android:layout_width="154dp"
             android:layout_height="119dp"
-            android:src="@drawable/spm" />
+            android:src="@drawable/ic_library_books_black_24dp" />
 
         <TextView
             android:id="@+id/textView4"
@@ -68,8 +84,8 @@
             android:id="@+id/imageView4"
             android:layout_width="157dp"
             android:layout_height="114dp"
-            tools:srcCompat="@tools:sample/backgrounds/scenic"
-            android:src="@drawable/ise" />
+            android:src="@drawable/ic_library_books_black_24dp" />
+            tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
         <TextView
             android:id="@+id/textView5"
@@ -81,8 +97,8 @@
             android:id="@+id/imageView5"
             android:layout_width="157dp"
             android:layout_height="114dp"
-            tools:srcCompat="@tools:sample/backgrounds/scenic"
-            android:src="@drawable/os" />
+            android:src="@drawable/ic_library_books_black_24dp" />
+            tools:srcCompat="@tools:sample/backgrounds/scenic" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

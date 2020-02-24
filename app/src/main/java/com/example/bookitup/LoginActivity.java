@@ -58,6 +58,7 @@ public class LoginActivity extends AppCompatActivity {
         email = emailTV.getText().toString();
         password = passwordTV.getText().toString();
 
+        //notify user to enter email and password if field is empty
         if (TextUtils.isEmpty(email)) {
             Toast.makeText(getApplicationContext(), "Please enter email...", Toast.LENGTH_LONG).show();
             return;
