@@ -23,8 +23,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Currency;
 
@@ -32,7 +36,7 @@ import java.util.Currency;
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
-
+    //private ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.AppTheme_NoActionBar);
@@ -45,11 +49,15 @@ public class MainActivity extends AppCompatActivity {
             Toolbar toolbar = findViewById(R.id.toolbar);
             setSupportActionBar(toolbar);
             FloatingActionButton fab = findViewById(R.id.fab);
+            Toast.makeText(getApplicationContext(), "on the main page", Toast.LENGTH_LONG).show();
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Snackbar.make(view, "Adding new book, please wait!", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
+                   //Snackbar.make(view, "Adding new book, please wait!", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                    Toast.makeText(getApplicationContext(), "Adding new book, please wait ", Toast.LENGTH_LONG).show();
+                    //progressBar.setVisibility(View.GONE);
+                    Intent intent = new Intent(MainActivity.this, AddBookActivity.class);
+                    startActivity(intent);
                 }
             });
             DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -77,7 +85,6 @@ public class MainActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
-
     }
 
     @Override
