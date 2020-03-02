@@ -24,7 +24,6 @@ public class ProfileFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.activity_edit_profile, container, false);
 
-
     }
 
 }

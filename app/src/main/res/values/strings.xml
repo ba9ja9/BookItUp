@@ -20,4 +20,5 @@
 
     <string name="title_activity_edit_profile">EditProfileActivity</string>
     <string name="change_password"> <u>Change Password</u>.</string>
+    <string name="title_activity_personal_info">PersonalInfoActivity</string>
 </resources>

@@ -4,8 +4,14 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
+<<<<<<< Updated upstream
 android:background="@color/colorWhite"
 android:orientation="vertical">
+=======
+android:orientation="vertical"
+android:background="@color/colorWhite"
+    >
+>>>>>>> Stashed changes
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -30,7 +36,7 @@ android:orientation="vertical">
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
                 android:text="John Doe"
-                android:textColor="#fff"
+                android:textColor="@color/colorWhite"
                 android:textSize="21sp"
                 android:textStyle="bold" />
 
@@ -59,6 +65,10 @@ android:orientation="vertical">
             android:layout_height="36dp"
             android:src="@drawable/ic_email_white_24dp"/>
         <TextView
+<<<<<<< Updated upstream
+=======
+            android:textColor="@color/colorBlack"
+>>>>>>> Stashed changes
             android:layout_gravity="center_vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -88,7 +98,7 @@ android:orientation="vertical">
         android:layout_marginTop="25dp"
         android:orientation="horizontal"
         android:paddingLeft="25dp"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <ImageView
             android:layout_width="36dp"
@@ -99,7 +109,12 @@ android:orientation="vertical">
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="20dp"
+<<<<<<< Updated upstream
             android:text="UTA"/>
+=======
+            android:text="UTA"
+            android:textColor="@color/colorBlack"/>
+>>>>>>> Stashed changes
     </LinearLayout>
     <LinearLayout
         android:layout_marginTop="25dp"
@@ -112,6 +127,10 @@ android:orientation="vertical">
             android:layout_height="36dp"
             android:src="@drawable/ic_business_center_white_24dp"/>
         <TextView
+<<<<<<< Updated upstream
+=======
+            android:textColor="@color/colorBlack"
+>>>>>>> Stashed changes
 
             android:layout_gravity="center_vertical"
             android:layout_width="wrap_content"
@@ -122,14 +141,19 @@ android:orientation="vertical">
 </LinearLayout>
 
 <Button
+<<<<<<< Updated upstream
     android:textColor="@color/colorWhite"
+=======
+>>>>>>> Stashed changes
     android:background="@drawable/button_style"
     android:layout_marginTop="35dp"
     android:layout_gravity="center_horizontal"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="Edit Profile"/>
+    android:text="Edit Profile"
+    android:textColor = "@color/colorWhite"/>
 
+<<<<<<< Updated upstream
 <TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -138,4 +162,15 @@ android:orientation="vertical">
     android:text="@string/change_password"
     android:textColorHighlight="@color/colorWhite"
     android:textColor="@color/colorPrimary"/>
+=======
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/change_password"
+        android:textColor="@color/colorPrimary"
+        android:textColorHighlight="@color/colorWhite"
+        android:textStyle="italic" />
+>>>>>>> Stashed changes
 </LinearLayout>
