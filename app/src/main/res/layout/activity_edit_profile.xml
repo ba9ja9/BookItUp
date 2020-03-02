@@ -4,7 +4,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-android:background="@color/colorPrimary"
+android:background="@color/colorWhite"
 android:orientation="vertical">
 
     <RelativeLayout
@@ -59,7 +59,6 @@ android:orientation="vertical">
             android:layout_height="36dp"
             android:src="@drawable/ic_email_white_24dp"/>
         <TextView
-            android:textColor="@color/colorWhite"
             android:layout_gravity="center_vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -100,8 +99,7 @@ android:orientation="vertical">
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="20dp"
-            android:text="UTA"
-            android:textColor="@color/colorWhite"/>
+            android:text="UTA"/>
     </LinearLayout>
     <LinearLayout
         android:layout_marginTop="25dp"
@@ -114,7 +112,6 @@ android:orientation="vertical">
             android:layout_height="36dp"
             android:src="@drawable/ic_business_center_white_24dp"/>
         <TextView
-            android:textColor="@color/colorWhite"
 
             android:layout_gravity="center_vertical"
             android:layout_width="wrap_content"
@@ -125,7 +122,7 @@ android:orientation="vertical">
 </LinearLayout>
 
 <Button
-    android:textColor="@color/colorPrimary"
+    android:textColor="@color/colorWhite"
     android:background="@drawable/button_style"
     android:layout_marginTop="35dp"
     android:layout_gravity="center_horizontal"
@@ -140,5 +137,5 @@ android:orientation="vertical">
     android:textStyle="italic"
     android:text="@string/change_password"
     android:textColorHighlight="@color/colorWhite"
-    android:textColor="@color/colorWhite"/>
+    android:textColor="@color/colorPrimary"/>
 </LinearLayout>
