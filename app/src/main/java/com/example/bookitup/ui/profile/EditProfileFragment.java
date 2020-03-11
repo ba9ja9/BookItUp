@@ -9,7 +9,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -37,6 +39,7 @@ public class EditProfileFragment extends Fragment {
     private EditText fNameET, lNameET, schoolET, majorET;
     private Button saveBtn;
     private TextView emailTV;
+    private ProgressBar progressBar;
 
     //firebase
     private FirebaseAuth mAuth;
@@ -60,6 +63,7 @@ public class EditProfileFragment extends Fragment {
         emailTV = view.findViewById(R.id.textViewEmail);
         schoolET = view.findViewById(R.id.uniTV);
         majorET = view.findViewById(R.id.majorTV);
+        progressBar = view.findViewById(R.id.progressBar);
 
         setupFirebaseAuth();
 
@@ -201,6 +205,8 @@ public class EditProfileFragment extends Fragment {
             myRef.child("major")
                     .setValue(major);
         }
+        Toast.makeText(getContext(), "Successed.", Toast.LENGTH_LONG).show();
+        progressBar.setVisibility(View.GONE);
     }
 
 }
