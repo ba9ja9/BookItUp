@@ -19,7 +19,6 @@ import androidx.fragment.app.ListFragment;
 
 import com.example.bookitup.ResetPasswordActivity;
 import com.example.bookitup.UserInformation;
-import com.example.bookitup.Utils.SectionsStatePagerAdapter;
 import com.google.android.gms.tasks.OnSuccessListener;
 
 import com.example.bookitup.R;
