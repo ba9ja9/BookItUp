@@ -28,8 +28,11 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -52,6 +55,7 @@ public class AddProfileActivity extends AppCompatActivity implements View.OnClic
     private static int PICK_IMAGE = 123;
     Uri imagePath;
     private StorageReference storageReference;
+    private DatabaseReference mRef;
 
     public AddProfileActivity() {
     }
@@ -108,17 +112,48 @@ public class AddProfileActivity extends AppCompatActivity implements View.OnClic
         String major = editTextMajor.getText().toString().trim();
         UserInformation userinformation = new UserInformation(name,surname,university,major);
         FirebaseUser user = firebaseAuth.getCurrentUser();
-        databaseReference.child(user.getUid()).setValue(userinformation);
+        databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(user.getUid());
+        databaseReference.setValue(userinformation);
         Toast.makeText(getApplicationContext(),"User information updated",Toast.LENGTH_LONG).show();
+    }
+    private void userLogedInInformation(){
+        mRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                //retrieve user information from the database
+//                setProfileWidgets(mFirebaseMethods.getUserSettings(dataSnapshot));
+                UserInformation userProfile = dataSnapshot.getValue(UserInformation.class);
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                editTextName.setText(userProfile.getfname());
+                editTextSurname.setText(userProfile.getlname());
+                textViewemailname.setText(user.getEmail());
+                editTextUniversity.setText(userProfile.getSchool());
+                editTextMajor.setText(userProfile.getMajor());
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
     }
     @Override
     public void onClick(View view) {
-        if (view==btnsave){
-                userInformation();
-                sendUserData();
-                finish();
-                startActivity(new Intent(AddProfileActivity.this, LoginActivity.class));
-        }
+            if (view == btnsave) {
+                if (imagePath == null) {
+                    Drawable drawable = this.getResources().getDrawable(R.drawable.image);
+                    Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.image);
+                    // openSelectProfilePictureDialog();
+                    userInformation();
+                    // sendUserData();
+                    finish();
+                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                } else {
+                    userInformation();
+                    sendUserData();
+                    finish();
+                    startActivity(new Intent(AddProfileActivity.this, LoginActivity.class));
+                }
+            }
     }
 
     private void sendUserData() {
