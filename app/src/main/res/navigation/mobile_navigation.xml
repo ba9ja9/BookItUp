@@ -12,6 +12,21 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
+        android:id="@+id/nav_profile"
+        android:name="com.example.bookitup.ui.profile.ProfileFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_nav_profile_to_nav_profile_edit"
+            app:destination="@id/nav_profile_edit" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_profile_edit"
+        android:name="com.example.bookitup.ui.profile.EditProfileFragment"
+        tools:layout="@layout/fragment_edit_profile"/>
+
+
+    <fragment
         android:id="@+id/nav_gallery"
         android:name="com.example.bookitup.ui.gallery.GalleryFragment"
         android:label="@string/menu_gallery"
